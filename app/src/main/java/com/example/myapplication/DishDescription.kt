@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.app.Activity
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import com.example.myapplication.databinding.ActivityDescriptionBinding
 
@@ -18,7 +19,7 @@ class DishDescription : Activity() {
         
         var describe = intent.getStringExtra("describe")
         var bytes = intent.getByteArrayExtra("image")
-        var bitmap = BitmapFactory.decodeByteArray(bytes, 0, bites.size())
+        var bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes?.size!!)
 
     }
 }

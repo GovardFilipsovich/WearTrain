@@ -31,14 +31,14 @@ class Table : Activity() {
 
         //Получение списка блюд для адаптера
         var menu_list = ArrayList<MenuItem>()
-        var c = database.rawQuery("select * from Menu")
+        var c = database.rawQuery("select * from Menu", null)
         c.moveToFirst()
-        
+
         while(c.moveToNext()){
             var logo_byte = c.getBlob(4)
             var img_byte = c.getBlob(2)
             menu_list.add(MenuItem(c.getString(1), BitmapFactory.decodeByteArray(logo_byte, 0, logo_byte.size), c.getString(3), BitmapFactory.decodeByteArray(img_byte, 0, img_byte.size)))
-            
+
         }
         // Адаптер
         var adapter = MenuAdapter(menu_list)
