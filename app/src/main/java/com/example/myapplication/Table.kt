@@ -33,11 +33,12 @@ class Table : Activity() {
         var menu_list = ArrayList<MenuItem>()
         var c = database.query("Menu", arrayOf("name", "logo"), null, null, null, null, null, null)
         c.moveToFirst()
-        do{
+        
+        while(!c.isAfterLast()){
             var img_byte = c.getBlob(1)
             menu_list.add(MenuItem(c.getString(0), BitmapFactory.decodeByteArray(img_byte, 0, img_byte.size)))
-        } while(c.moveToNext())
-
+            c.moveToNext()
+        }
         // Адаптер
         var adapter = MenuAdapter(menu_list)
 
