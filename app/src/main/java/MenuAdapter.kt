@@ -27,6 +27,8 @@ class MenuAdapter(private val menu: List<MenuItem>) :
             itemView.setOnClickListener(
                 View.OnClickListener {
                     var intent = Intent(itemView.context, DishDescription::class.java)
+                    intent.putExtra("describe", item.describe);
+                    intent.putExtra("image", item.image);
                     startActivity(itemView.context, intent, null)
                 }
             )
@@ -43,7 +45,7 @@ class MenuAdapter(private val menu: List<MenuItem>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         try {
             holder.text1?.text = menu[position].name
-            holder.img?.setImageBitmap(menu[position].image)
+            holder.img?.setImageBitmap(menu[position].logo)
 
         }catch (e: IllegalArgumentException){}
 
