@@ -13,6 +13,12 @@ class DishDescription : Activity() {
 
         binding = ActivityDescriptionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        
+        var intent = getIntent()
+        
+        var describe = intent.getStringExtra("describe")
+        var bytes = intent.getByteArrayExtra("image")
+        var bitmap = BitmapFactory.decodeByteArray(bytes, 0, bites.size())
 
     }
 }
