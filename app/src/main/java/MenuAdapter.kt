@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.wear.widget.WearableRecyclerView
 import com.example.myapplication.DishDescription
 import com.example.myapplication.R
-import com.squareup.picasso.Picasso
 
 class MenuAdapter(private val menu: List<MenuItem>) :
     RecyclerView.Adapter<MenuAdapter.MyViewHolder>() {
