@@ -14,6 +14,9 @@ class DishDescription : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        binding = ActivityDescriptionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         var intent = getIntent()
 
         var describe = intent.getStringExtra("describe")
