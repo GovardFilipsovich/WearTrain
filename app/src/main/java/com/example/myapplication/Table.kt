@@ -5,6 +5,7 @@ import MenuItem
 import android.app.Activity
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityTableBinding
@@ -33,13 +34,11 @@ class Table : Activity() {
         var menu_list = ArrayList<MenuItem>()
         var c = database.rawQuery("select * from Menu", null)
         c.moveToFirst()
-
-        while(c.moveToNext()){
+        do{
             var logo_byte = c.getBlob(4)
             var img_byte = c.getBlob(2)
             menu_list.add(MenuItem(c.getString(1), BitmapFactory.decodeByteArray(logo_byte, 0, logo_byte.size), c.getString(3), BitmapFactory.decodeByteArray(img_byte, 0, img_byte.size)))
-
-        }
+        }while(c.moveToNext())
         // Адаптер
         var adapter = MenuAdapter(menu_list)
 
