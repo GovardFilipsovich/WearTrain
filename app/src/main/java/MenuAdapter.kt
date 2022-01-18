@@ -1,4 +1,5 @@
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,8 @@ class MenuAdapter(private val menu: List<MenuItem>) :
                     var intent = Intent(itemView.context, DishDescription::class.java)
                     intent.putExtra("describe", item.describe);
                     intent.putExtra("image", item.image);
+                    intent.putExtra("name", item.name)
+                    intent.putExtra("logo", item.logo)
                     startActivity(itemView.context, intent, null)
                 }
             )
@@ -44,7 +47,8 @@ class MenuAdapter(private val menu: List<MenuItem>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         try {
             holder.text1?.text = menu[position].name
-            holder.img?.setImageBitmap(menu[position].logo)
+            var bit = BitmapFactory.decodeByteArray(menu[position].logo, 0, menu[position].logo.size)
+            holder.img?.setImageBitmap(bit)
 
         }catch (e: IllegalArgumentException){}
 

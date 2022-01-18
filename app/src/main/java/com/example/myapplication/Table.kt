@@ -37,7 +37,7 @@ class Table : Activity() {
         do{
             var logo_byte = c.getBlob(4)
             var img_byte = c.getBlob(2)
-            menu_list.add(MenuItem(c.getString(1), BitmapFactory.decodeByteArray(logo_byte, 0, logo_byte.size), c.getString(3), BitmapFactory.decodeByteArray(img_byte, 0, img_byte.size)))
+            menu_list.add(MenuItem(c.getString(1), logo_byte, c.getString(3), img_byte))
         }while(c.moveToNext())
         // Адаптер
         var adapter = MenuAdapter(menu_list)
